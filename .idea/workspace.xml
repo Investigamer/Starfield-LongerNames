@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="Starfield-LongerNames" targetName="Starfield-LongerNames" />
+      <config projectName="Starfield-LongerNames" targetName="CommonLibSF" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="longer-names-build-release" ENABLED="true" GENERATION_DIR="build" CONFIG_NAME="Release" GENERATION_OPTIONS="-G &quot;Visual Studio 17 2022&quot; --preset &quot;build-release-msvc-msvc&quot;" />
+      <configuration PROFILE_NAME="build-debug-msvc-msvc" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-debug-msvc-ninja" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-debug-clang-cl-msvc" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-debug-clang-cl-ninja" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-release-msvc-msvc" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-release-msvc-ninja" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-release-clang-cl-msvc" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-release-clang-cl-ninja" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-debug-msvc-ninja - debug-msvc-ninja" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-release-msvc-ninja - release-msvc-ninja" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-debug-msvc-msvc - debug-msvc-msvc" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-release-msvc-msvc - release-msvc-msvc" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-debug-clang-cl-ninja - debug-clang-cl-ninja" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-release-clang-cl-ninja - release-clang-cl-ninja" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-debug-clang-cl-msvc - debug-clang-cl-msvc" ENABLED="false" FROM_PRESET="true" />
+      <configuration PROFILE_NAME="build-release-clang-cl-msvc - release-clang-cl-msvc" ENABLED="false" FROM_PRESET="true" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1a2ef868-783b-4714-b3cb-c24d036926fe" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Plugin/dist/Data/SFSE/Plugins/Starfield-LongerNames.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugin/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugin/dist/ExampleConfig.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugin/src/PCH.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/src/PCH.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugin/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugin/vcpkg.json" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/vcpkg.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:longer-names-build-release" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="2.1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2VWKiKkHONlEm8cx9f6nduxY1Kb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.advertisement.text.has.clang-format": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "I:/Dev/.MODS/Starfield-LongerNames",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CMakeSettings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="I:\Dev\.MODS\Starfield-LongerNames\Plugin\dist\Data\SFSE\Plugins" />
+    </key>
+  </component>
+  <component name="RunManager" selected="CMake Application.Starfield-LongerNames">
+    <configuration name="CommonLibSF" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Starfield-LongerNames" TARGET_NAME="CommonLibSF" CONFIG_NAME="longer-names-build-release">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Starfield-LongerNames" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Starfield-LongerNames" TARGET_NAME="Starfield-LongerNames" CONFIG_NAME="longer-names-build-release">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Starfield-LongerNames" />
+      <item itemvalue="CMake Application.CommonLibSF" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a2ef868-783b-4714-b3cb-c24d036926fe" name="Changes" comment="" />
+      <created>1694946521213</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694946521213</updated>
+      <workItem from="1694946522230" duration="2397000" />
+      <workItem from="1694950090565" duration="3556000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticEditVcpkgJson value="false" />
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticFoundErrors value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 // c
+/*
 #include <cassert>
 #include <cctype>
 #include <cerrno>
@@ -78,9 +79,9 @@
 #include <span>
 #include <sstream>
 #include <stack>
-#include <stdexcept>
+#include <stdexcept> // Might need
 #include <streambuf>
-#include <string>
+#include <string> // Might need
 #include <string_view>
 #include <syncstream>
 #include <system_error>
@@ -96,10 +97,14 @@
 #include <variant>
 #include <vector>
 #include <version>
+*/
 
 // Clib
-#include "RE/Starfield.h"
+//#include "RE/Starfield.h"
 #include "SFSE/SFSE.h"
+
+// Ini files
+#include "SimpleIni.h"
 
 // winnt
 #include <ShlObj_core.h>
@@ -117,4 +122,3 @@ using namespace REL::literals;
 
 // DKUtil
 #include "DKUtil/Hook.hpp"
-#include "DKUtil/Logger.hpp"
