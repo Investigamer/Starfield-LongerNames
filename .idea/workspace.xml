@@ -50,7 +50,6 @@
       <change beforePath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugin/src/PCH.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/src/PCH.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugin/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +136,7 @@
       <workItem from="1694946522230" duration="2397000" />
       <workItem from="1694950090565" duration="6431000" />
       <workItem from="1694957096766" duration="3276000" />
-      <workItem from="1694960438507" duration="2429000" />
+      <workItem from="1694960438507" duration="16853000" />
     </task>
     <servers />
   </component>

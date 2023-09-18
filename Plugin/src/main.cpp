@@ -64,27 +64,19 @@ namespace ShipCharCount
 {
     void Install()
     {
-        try {
-            // Address, process ID, and handle
-            uintptr_t BASE_ADDRESS = DKUtil::Hook::Module::get().base();
-            uintptr_t writeNum = BASE_ADDRESS + 0xFFDBA3; // Writes our number to the max char count address
-            uintptr_t writeRet = BASE_ADDRESS + 0xFFDB94; // Shifts the return call address
-            HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
+        // Address, process ID, and handle
+        using namespace dku::Alias;
+        uintptr_t BASE_ADDRESS = DKUtil::Hook::Module::get().base();
+        std::array<std::uint8_t, 11> RawPatch{
+            0xC7, 0x81, 0xC8, 0x00, 0x00, 0x00, (BYTE) getConfigVal(), 0x00, 0x00, 0x00, 0xC3 };
 
-            // Patch the opcode
-            BYTE newRet[] = {0x18};
-            BYTE newNum[] = {0xC7, 0x81, 0xC8, 0x00, 0x00, 0x00, (BYTE) getConfigVal(), 0x00, 0x00, 0x00, 0xC3};
-            WriteProcessMemory(hProcess, (LPVOID) writeNum, newNum, sizeof(newNum), nullptr);
-            WriteProcessMemory(hProcess, (LPVOID) writeRet, newRet, sizeof(newRet), nullptr);
-            INFO("Patched Ship Name maximum characters!");
-
-            // Close the handle to the game process
-            CloseHandle(hProcess);
-        } catch (const std::exception& ex) {
-            INFO(ex.what());
-        } catch (...) {
-            INFO("Unspecified error!");
-        }
+        // Create hook
+        auto charCountHook = dku::Hook::AddASMPatch(
+                BASE_ADDRESS + 0xFFDBA3, // Address to patch
+                std::make_pair(0x0, 0x7), // Offset range
+                { RawPatch.data(), RawPatch.size() }); // Raw patch
+        charCountHook->Enable();
+        INFO("Max character count patched successfully!")
     }
 }
 
