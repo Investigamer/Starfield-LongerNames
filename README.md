@@ -8,7 +8,7 @@ Native dll plugin for [starfield script extender](https://github.com/ianpatt/sfs
   
 ## How to Use
 
-- Download the latest release either here or on [Nexus Mods]()
+- Download the latest release either here or on [Nexus Mods](https://www.nexusmods.com/starfield/mods/1635)
 - Extract the contents of the zip into your Starfield install directory
 - Run Starfield (using SFSE loader)
 

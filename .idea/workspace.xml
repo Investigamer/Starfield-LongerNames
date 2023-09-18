@@ -10,14 +10,11 @@
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
-    <generated>
-      <config projectName="Starfield-LongerNames" targetName="Starfield-LongerNames" />
-      <config projectName="Starfield-LongerNames" targetName="CommonLibSF" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
-      <configuration PROFILE_NAME="longer-names-build-release" ENABLED="true" GENERATION_DIR="build" CONFIG_NAME="Release" GENERATION_OPTIONS="--preset &quot;build-release-msvc-msvc&quot;" NO_GENERATOR="true">
+      <configuration PROFILE_NAME="longer-names-build-release" ENABLED="false" GENERATION_DIR="build" CONFIG_NAME="Release" GENERATION_OPTIONS="--preset &quot;build-release-msvc-msvc&quot;" NO_GENERATOR="true">
         <ADDITIONAL_GENERATION_ENVIRONMENT>
           <envs>
             <env name="SFPath" value="D:\Games\Warez\Starfield" />
@@ -48,8 +45,7 @@
       <change beforePath="$PROJECT_DIR$/Plugin/dist/Data/SFSE/Plugins/Starfield-LongerNames.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/dist/Data/SFSE/Plugins/Starfield-LongerNames.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/src/PCH.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/src/PCH.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +55,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:longer-names-build-release" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:build-debug-msvc-msvc - debug-msvc-msvc" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -89,7 +85,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;I:/Dev/.MODS/Starfield-LongerNames&quot;,
+    &quot;last_opened_file_path&quot;: &quot;I:/Dev/.MODS/Starfield-NoAffinityLoss&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -104,26 +100,12 @@
       <recent name="I:\Dev\.MODS\Starfield-LongerNames\Plugin\dist\Data\SFSE\Plugins" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.Starfield-LongerNames">
-    <configuration name="CommonLibSF" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Starfield-LongerNames" TARGET_NAME="CommonLibSF" CONFIG_NAME="longer-names-build-release">
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Starfield-LongerNames" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Starfield-LongerNames" TARGET_NAME="Starfield-LongerNames" CONFIG_NAME="longer-names-build-release">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="CMake Application.Starfield-LongerNames" />
-      <item itemvalue="CMake Application.CommonLibSF" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -136,7 +118,9 @@
       <workItem from="1694946522230" duration="2397000" />
       <workItem from="1694950090565" duration="6431000" />
       <workItem from="1694957096766" duration="3276000" />
-      <workItem from="1694960438507" duration="16853000" />
+      <workItem from="1694960438507" duration="18302000" />
+      <workItem from="1695041245099" duration="35000" />
+      <workItem from="1695042000897" duration="2382000" />
     </task>
     <servers />
   </component>
