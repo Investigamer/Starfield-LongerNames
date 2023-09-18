@@ -42,10 +42,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1a2ef868-783b-4714-b3cb-c24d036926fe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/dist/Data/SFSE/Plugins/Starfield-LongerNames.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/dist/Data/SFSE/Plugins/Starfield-LongerNames.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/dist/Starfield-LongerNames.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugin/CMakePresets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Plugin/CMakePresets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-clang-cl.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/make-sln-clang-cl.bat" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +119,7 @@
       <workItem from="1694957096766" duration="3276000" />
       <workItem from="1694960438507" duration="18302000" />
       <workItem from="1695041245099" duration="35000" />
-      <workItem from="1695042000897" duration="2382000" />
+      <workItem from="1695042000897" duration="3094000" />
     </task>
     <servers />
   </component>
