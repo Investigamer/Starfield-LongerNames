@@ -18,6 +18,26 @@
 * - "Starfield.exe" + 0xFFDBA3
 **/
 
+template <std::size_t N, typename T = std::uint8_t>
+std::unique_ptr<DKUtil::Hook::ASMPatchHandle> createHook(
+	uintptr_t        targetOffset,
+	int              targetLength,
+	std::array<T, N> opcode)
+{
+	/**
+     * Creates an ASM patch object.
+     * @param targetOffset: Offset to add to the base address to find the target location to patch.
+     * @param targetLength: Length of the opcode we want to overwrite with this patch, e.g. 0x8 or 8.
+     * @param opcode: New opcode to write with this patch.
+     * @returns: ASMPatchHandle that can be enabled.
+     */
+	uintptr_t BASE_ADDRESS = DKUtil::Hook::Module::get().base();
+	return DKUtil::Hook::AddASMPatch(
+		BASE_ADDRESS + targetOffset,
+		std::make_pair(0x0, targetLength),
+		{ opcode.data(), opcode.size() });
+}
+
 std::string RemoveFileNameFromPath(const std::string& path)
 {
     size_t lastSlash = path.find_last_of("\\/");
@@ -64,35 +84,35 @@ namespace ShipCharCount
 {
     void Install()
     {
-        // Address, process ID, and handle
-        using namespace dku::Alias;
+        // Charcount patch
+        using namespace DKUtil::Alias;
         uintptr_t BASE_ADDRESS = DKUtil::Hook::Module::get().base();
-        std::array<std::uint8_t, 11> RawPatch{
-            0xC7, 0x81, 0xC8, 0x00, 0x00, 0x00, (BYTE) getConfigVal(), 0x00, 0x00, 0x00, 0xC3 };
-
-        // Create hook
-        auto charCountHook = dku::Hook::AddASMPatch(
-                BASE_ADDRESS + 0xFFDBA3, // Address to patch
-                std::make_pair(0x0, 0x7), // Offset range
-                { RawPatch.data(), RawPatch.size() }); // Raw patch
+        std::array<std::uint8_t, 11> opcode{
+            0xC7, 0x81, 0xC8, 0x00, 0x00, 0x00, 
+            (BYTE)getConfigVal(), 0x00, 0x00, 0x00, 
+            0xC3 };
+        auto charCountHook = createHook(0xFFDBA3, 0x7, opcode);
         charCountHook->Enable();
         INFO("Max character count patched successfully!")
     }
 }
 
 DLLEXPORT constinit auto SFSEPlugin_Version = []() noexcept {
-    SFSE::PluginVersionData data{};
+	SFSE::PluginVersionData data{};
 
-    data.PluginVersion(Plugin::Version);
-    data.PluginName(Plugin::NAME);
-    data.AuthorName(Plugin::AUTHOR);
-    data.UsesSigScanning(true);
-    //data.UsesAddressLibrary(true);
-    data.HasNoStructUse(true);
-    //data.IsLayoutDependent(true);
-    data.CompatibleVersions({ SFSE::RUNTIME_LATEST });
+	data.PluginVersion(Plugin::Version);
+	data.PluginName(Plugin::NAME);
+	data.AuthorName(Plugin::AUTHOR);
+	data.UsesSigScanning(true);
+	//data.UsesAddressLibrary(true);
+	data.HasNoStructUse(true);
+	//data.IsLayoutDependent(true);
+	data.CompatibleVersions({ 
+        SFSE::RUNTIME_SF_1_7_23,
+		SFSE::RUNTIME_SF_1_7_29,
+		SFSE::RUNTIME_LATEST });
 
-    return data;
+	return data;
 }();
 
 namespace
@@ -119,21 +139,20 @@ void SFSEPlugin_Preload(SFSE::LoadInterface* a_sfse);
 
 DLLEXPORT bool SFSEAPI SFSEPlugin_Load(const SFSE::LoadInterface* a_sfse)
 {
-/**#ifndef NDEBUG
-	// Currently causes infinite wait loop even when not debugging?
-    while (!IsDebuggerPresent()) {
+#ifndef NDEBUG
+	while (!IsDebuggerPresent()) {
 		Sleep(100);
 	}
-#endif**/
+#endif
 
-	SFSE::Init(a_sfse);
+	SFSE::Init(a_sfse, false);
 
 	DKUtil::Logger::Init(Plugin::NAME, std::to_string(Plugin::Version));
 
 	INFO("{} v{} loaded", Plugin::NAME, Plugin::Version);
 
 	// Insert plugin to messaging interface
-    SFSE::AllocTrampoline(1 << 8);
+	SFSE::AllocTrampoline(1 << 8);
 	SFSE::GetMessagingInterface()->RegisterListener(MessageCallback);
 
 	return true;

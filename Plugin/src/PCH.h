@@ -98,7 +98,7 @@
 #include <version>
 
 // Clib
-// #include "RE/Starfield.h"
+#include "RE/Starfield.h"
 #include "SFSE/SFSE.h"
 
 // Ini files
@@ -110,7 +110,8 @@
 #undef min
 #undef max
 
-using namespace std;
+using namespace std::literals;
+using namespace REL::literals;
 
 #define DLLEXPORT extern "C" [[maybe_unused]] __declspec(dllexport)
 
@@ -119,3 +120,4 @@ using namespace std;
 
 // DKUtil
 #include "DKUtil/Hook.hpp"
+#include "DKUtil/Logger.hpp"
