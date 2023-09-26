@@ -121,3 +121,6 @@ using namespace REL::literals;
 // DKUtil
 #include "DKUtil/Hook.hpp"
 #include "DKUtil/Logger.hpp"
+
+using namespace DKUtil::Alias;
+using namespace DKUtil::Hook;
