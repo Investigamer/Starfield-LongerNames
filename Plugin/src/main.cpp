@@ -66,12 +66,13 @@ namespace ShipCharCount
 {
     void Install()
     {
-        const auto patchAddress = reinterpret_cast<uintptr_t>(search_pattern<"48 8B 88 E0 ?? ?? ?? 44 89 81">());
+        auto patchAddress = reinterpret_cast<uintptr_t>(search_pattern<"48 8B 88 E0 ?? ?? ?? 44 89 81">());
         if (patchAddress) {
-            std::array<std::uint8_t, 11> opcode{
+            patchAddress += 7;
+            INFO("Found patch address: {:x}", patchAddress);
+            std::array<std::uint8_t, 10> opcode{
                 0xC7, 0x81, 0xC8, 0x00, 0x00, 0x00,
-                (BYTE)getConfigVal(), 0x00, 0x00, 0x00,
-                0xC3
+                (BYTE)getConfigVal(), 0x00, 0x00, 0x00
             };
 
             // Create hook
