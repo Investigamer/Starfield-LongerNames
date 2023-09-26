@@ -69,7 +69,7 @@ namespace ShipCharCount
         auto patchAddress = reinterpret_cast<uintptr_t>(search_pattern<"48 8B 88 E0 ?? ?? ?? 44 89 81">());
         if (patchAddress) {
             patchAddress += 7;
-            INFO("Found patch address: {:x}", patchAddress);
+            DEBUG("Found patch address: {:x}", patchAddress);
             std::array<std::uint8_t, 10> opcode{
                 0xC7, 0x81, 0xC8, 0x00, 0x00, 0x00,
                 (BYTE)getConfigVal(), 0x00, 0x00, 0x00
@@ -99,23 +99,10 @@ DLLEXPORT constinit auto SFSEPlugin_Version = []() noexcept {
 	//data.UsesAddressLibrary(true);
 	data.HasNoStructUse(true);
 	//data.IsLayoutDependent(true);
-
-    // A little workaround, until SFSE implements "version independence" that would be set by UsesSigScanning or UsesAddressLibrary
 	data.CompatibleVersions({ 
         SFSE::RUNTIME_SF_1_7_23,
 		SFSE::RUNTIME_SF_1_7_29,
-		SFSE::RUNTIME_LATEST,
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 1),
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 2),
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 3),
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 4),
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 5),
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 6),
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 7),
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 8),
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 9),
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 10),
-        REL::Version(SFSE::RUNTIME_LATEST[0], SFSE::RUNTIME_LATEST[1], SFSE::RUNTIME_LATEST[2], SFSE::RUNTIME_LATEST[3] + 11)
+		SFSE::RUNTIME_LATEST
 	});
 
 	return data;
