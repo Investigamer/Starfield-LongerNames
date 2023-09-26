@@ -1,3 +1,5 @@
+
+#include "PCH.h"
 /**
 * STARFIELD MOD
 * Increase Max Characters - Ship, Settlement, and Item Names
@@ -17,26 +19,6 @@
 * We inject the opcode at:
 * - "Starfield.exe" + 0xFFDBA3
 **/
-
-template <std::size_t N, typename T = std::uint8_t>
-std::unique_ptr<DKUtil::Hook::ASMPatchHandle> createHook(
-	uintptr_t        targetOffset,
-	int              targetLength,
-	std::array<T, N> opcode)
-{
-	/**
-     * Creates an ASM patch object.
-     * @param targetOffset: Offset to add to the base address to find the target location to patch.
-     * @param targetLength: Length of the opcode we want to overwrite with this patch, e.g. 0x8 or 8.
-     * @param opcode: New opcode to write with this patch.
-     * @returns: ASMPatchHandle that can be enabled.
-     */
-	uintptr_t BASE_ADDRESS = DKUtil::Hook::Module::get().base();
-	return DKUtil::Hook::AddASMPatch(
-		BASE_ADDRESS + targetOffset,
-		std::make_pair(0x0, targetLength),
-		{ opcode.data(), opcode.size() });
-}
 
 std::string RemoveFileNameFromPath(const std::string& path)
 {
@@ -84,16 +66,26 @@ namespace ShipCharCount
 {
     void Install()
     {
-        // Charcount patch
-        using namespace DKUtil::Alias;
-        uintptr_t BASE_ADDRESS = DKUtil::Hook::Module::get().base();
-        std::array<std::uint8_t, 11> opcode{
-            0xC7, 0x81, 0xC8, 0x00, 0x00, 0x00, 
-            (BYTE)getConfigVal(), 0x00, 0x00, 0x00, 
-            0xC3 };
-        auto charCountHook = createHook(0xFFDBA3, 0x7, opcode);
-        charCountHook->Enable();
-        INFO("Max character count patched successfully!")
+        auto patchAddress = reinterpret_cast<uintptr_t>(search_pattern<"48 8B 88 E0 ?? ?? ?? 44 89 81">());
+        if (patchAddress) {
+            patchAddress += 7;
+            DEBUG("Found patch address: {:x}", patchAddress);
+            std::array<std::uint8_t, 10> opcode{
+                0xC7, 0x81, 0xC8, 0x00, 0x00, 0x00,
+                (BYTE)getConfigVal(), 0x00, 0x00, 0x00
+            };
+
+            // Create hook
+            const auto asmPatchHandle = AddASMPatch(
+                patchAddress, // Address to patch
+                std::make_pair(0x0, 0x7), // Offset range
+                { opcode.data(), opcode.size() });
+            asmPatchHandle->Enable();
+            INFO("Max character count patched successfully!")
+        }
+        else {
+            ERROR("Couldn't find the patch address");
+        }
     }
 }
 
@@ -110,7 +102,8 @@ DLLEXPORT constinit auto SFSEPlugin_Version = []() noexcept {
 	data.CompatibleVersions({ 
         SFSE::RUNTIME_SF_1_7_23,
 		SFSE::RUNTIME_SF_1_7_29,
-		SFSE::RUNTIME_LATEST });
+		SFSE::RUNTIME_LATEST
+	});
 
 	return data;
 }();
@@ -140,9 +133,10 @@ void SFSEPlugin_Preload(SFSE::LoadInterface* a_sfse);
 DLLEXPORT bool SFSEAPI SFSEPlugin_Load(const SFSE::LoadInterface* a_sfse)
 {
 #ifndef NDEBUG
-	while (!IsDebuggerPresent()) {
+    MessageBoxW(NULL, L"Loaded. You can attach the debugger now, then press OK", L"Starfield-LongerNames SFSE Plugin", NULL);
+	/*while (!IsDebuggerPresent()) {
 		Sleep(100);
-	}
+	}*/
 #endif
 
 	SFSE::Init(a_sfse, false);
