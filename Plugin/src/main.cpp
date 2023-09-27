@@ -1,5 +1,6 @@
 
 #include "PCH.h"
+
 /**
 * STARFIELD MOD
 * Increase Max Characters - Ship, Settlement, and Item Names
@@ -20,67 +21,57 @@
 * - "Starfield.exe" + 0xFFDBA3
 **/
 
-std::string RemoveFileNameFromPath(const std::string& path)
-{
-    size_t lastSlash = path.find_last_of("\\/");
-    if (lastSlash != std::string::npos) {
-        return path.substr(0, lastSlash);
-    }
-    return path;
-}
-
-// Load INI config values
-BYTE getConfigVal()
-{
-    // Get module path
-    char pBuf[MAX_PATH];
-    DWORD modulePath = GetModuleFileNameA((HMODULE)nullptr, (LPSTR)pBuf, (DWORD)MAX_PATH);
-    if (modulePath == 0) {
-        INFO("Couldn't locate INI file! Reverting to default value.");
-        return 25;
-    }
-
-    // Get INI file path
-    std::string strModPath(pBuf, pBuf + modulePath);
-    strModPath = RemoveFileNameFromPath(strModPath);
-    std::string iniPath = strModPath + R"(\Data\SFSE\Plugins\Starfield-LongerNames.ini)";
-
-
-    // INI config file
-    CSimpleIniA iniFile;
-    iniFile.SetUnicode();
-    SI_Error rc = iniFile.LoadFile(iniPath.c_str());
-    if (rc < 0) {
-        INFO("Error reading INI file! Reverting to default value.");
-        return (BYTE)25;
-    }
-    int maxCharCount = (int)iniFile.GetDoubleValue("Main", "ShipNameMaxChars", 25);
-    INFO("ShipNameMaxChars(" + std::to_string(maxCharCount) + ") loaded from INI file!");
-    if (maxCharCount < 0 || maxCharCount > 255) {
-        return (BYTE)25;
-    }
-    return (BYTE)maxCharCount;
-}
-
 namespace ShipCharCount
 {
+    struct Prolog : Xbyak::CodeGenerator
+    {
+        Prolog()
+        {
+            // save rax to the stack
+            sub(rsp, 0x10);
+            mov(ptr[rsp], rax);
+        }
+    };
+
+    struct Epilog : Xbyak::CodeGenerator
+    {
+        Epilog()
+        {
+            // write the return value from the hook function to r8d
+            mov(r8d, al);
+
+            // restore rax from stack
+            mov (rax, ptr[rsp]);
+            add(rsp, 0x10);
+        }
+    };
+
+    uint8_t Hook_GetMaxCharCount()
+    {
+        return Settings::GetSingleton()->GetShipNameMaxChars();
+    }
+
     void Install()
     {
-        auto patchAddress = reinterpret_cast<uintptr_t>(search_pattern<"48 8B 88 E0 ?? ?? ?? 44 89 81">());
+        auto patchAddress = reinterpret_cast<uintptr_t>(search_pattern<"48 8B 88 ?? ?? ?? ?? 44 89 81 ?? ?? ?? ?? C3">());
         if (patchAddress) {
             patchAddress += 7;
-            DEBUG("Found patch address: {:x}", patchAddress);
-            std::array<std::uint8_t, 10> opcode{
-                0xC7, 0x81, 0xC8, 0x00, 0x00, 0x00,
-                (BYTE)getConfigVal(), 0x00, 0x00, 0x00
-            };
+            INFO("Found the patch address: {:x}", patchAddress);
+
+            Prolog prolog{};
+            prolog.ready();
+            Epilog epilog{};
+            epilog.ready();
 
             // Create hook
-            const auto asmPatchHandle = AddASMPatch(
-                patchAddress, // Address to patch
-                std::make_pair(0x0, 0x7), // Offset range
-                { opcode.data(), opcode.size() });
-            asmPatchHandle->Enable();
+            const auto caveHookHandle = AddCaveHook(
+                patchAddress,
+                { 0, 7 },
+                FUNC_INFO(Hook_GetMaxCharCount),
+                &prolog,
+                &epilog,
+                HookFlag::kRestoreAfterEpilog);
+            caveHookHandle->Enable();
             INFO("Max character count patched successfully!")
         }
         else {
@@ -115,6 +106,8 @@ namespace
 		switch (a_msg->type) {
 		case SFSE::MessagingInterface::kPostLoad:
 			{
+                // Load the settings file
+                Settings::GetSingleton()->Load();
                 // Install plugin
                 ShipCharCount::Install();
 				break;
