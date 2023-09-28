@@ -28,8 +28,7 @@ namespace ShipCharCount
         Prolog()
         {
             // save rax to the stack
-            sub(rsp, 0x10);
-            mov(ptr[rsp], rax);
+            push(rax);
         }
     };
 
@@ -41,8 +40,7 @@ namespace ShipCharCount
             mov(r8d, al);
 
             // restore rax from stack
-            mov (rax, ptr[rsp]);
-            add(rsp, 0x10);
+            pop(rax);
         }
     };
 
