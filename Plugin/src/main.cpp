@@ -37,14 +37,14 @@ namespace ShipCharCount
         Epilog()
         {
             // write the return value from the hook function to r8d
-            mov(r8d, al);
+            mov(r8d, eax);
 
             // restore rax from stack
             pop(rax);
         }
     };
 
-    uint8_t Hook_GetMaxCharCount()
+    int Hook_GetMaxCharCount()
     {
         return Settings::GetSingleton()->GetShipNameMaxChars();
     }

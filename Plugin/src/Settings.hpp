@@ -11,15 +11,15 @@ private:
 
     Integer shipNameMaxChars{ "ShipNameMaxChars", "Main"};
 public:
-    uint8_t GetShipNameMaxChars()
+    int GetShipNameMaxChars()
     {
-        return static_cast<uint8_t>(*shipNameMaxChars);
+        return *shipNameMaxChars;
     }
 
     void Load() noexcept
     {
         static std::once_flag bound;
-        std::call_once(bound, [&]() { mainConfig.Bind<10, 255>(shipNameMaxChars, 25); });
+        std::call_once(bound, [&]() { mainConfig.Bind<10, 1000>(shipNameMaxChars, 25); });
 
         mainConfig.Load();
     }
