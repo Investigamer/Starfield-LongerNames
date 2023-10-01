@@ -27,6 +27,8 @@ namespace ShipCharCount
     {
         Prolog()
         {
+            // save rcx to the stack
+            push(rcx);
             // save rax to the stack
             push(rax);
         }
@@ -41,6 +43,8 @@ namespace ShipCharCount
 
             // restore rax from stack
             pop(rax);
+            // restore rcx from stack
+            pop(rcx);
         }
     };
 
