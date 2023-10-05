@@ -124,3 +124,6 @@ using namespace REL::literals;
 
 using namespace DKUtil::Alias;
 using namespace DKUtil::Hook;
+
+// Settings
+#include "Settings.hpp"
